@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Day58Demo.Models.Services;
 
-public class UserService
+public class UserService : ICrudService<User>
 {
     public async Task<List<User>> GetAllAsync()
     {
@@ -36,16 +36,18 @@ public class UserService
         await context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(User user)
+    public async Task<bool> UpdateAsync(User user)
     {
         using var context = new ApplicationDbContext();
 
         // Shubham Pandharpote
         context.Users.Update(user);
         await context.SaveChangesAsync();
+
+        return true;
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
         using var context = new ApplicationDbContext();
 
@@ -57,5 +59,7 @@ public class UserService
         context.Users.Remove(userToDelete);
 
         await context.SaveChangesAsync();
+
+        return true;
     }
 }

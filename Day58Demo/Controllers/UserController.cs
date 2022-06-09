@@ -22,7 +22,6 @@ public class UserController : Controller
         return View(user);
     }
 
-    [HttpGet]
     public IActionResult Create()
     {
         var user = Utility.GenerateFakeData();

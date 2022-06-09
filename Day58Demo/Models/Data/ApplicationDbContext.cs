@@ -5,6 +5,7 @@ namespace Day58Demo.Models.Data;
 public class ApplicationDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<Department> Departments { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
