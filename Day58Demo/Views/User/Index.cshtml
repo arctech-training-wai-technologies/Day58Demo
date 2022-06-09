@@ -1,0 +1,49 @@
+﻿@model List<Day58Demo.Models.User>
+
+<h1>User List</h1>
+
+<div>
+    <a asp-controller="User" asp-action="Create">Create New User</a>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>DateOfBirth</td>
+        <td>Pan</td>
+        <td>Address</td>
+        <td>Gender</td>
+        <td>MobileNumber</td>
+        <td>Email</td>
+        <td>Comment</td>
+        <td>DepartmentRefId</td>
+        <td>Operation</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.DateOfBirth</td>
+            <td>@user.Pan</td>
+            <td>@user.Address</td>
+            <td>@user.Gender</td>
+            <td>@user.MobileNumber</td>
+            <td>@user.Email</td>
+            <td>@user.Comment</td>
+            <td>@user.DepartmentRefId</td>
+            <td>
+                <a asp-controller="User" asp-action="Details" asp-route-id="@user.Id">Details</a> | 
+                <a asp-controller="User" asp-action="Update" asp-route-id="@user.Id">Edit</a> |
+                <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

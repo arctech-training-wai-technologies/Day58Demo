@@ -1,0 +1,64 @@
+﻿@model Day58Demo.Models.User
+
+<h1>Update User</h1>
+
+<form asp-controller="User" asp-action="Update" method="post">
+    <table class="table table-bordered table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>First Name</th>
+                <td><input asp-for="FirstName" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input asp-for="LastName" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td><input asp-for="DateOfBirth" type="date" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>PAN</th>
+                <td><input asp-for="Pan" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><textarea asp-for="Address" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="M">
+                        <label class="btn btn-outline-primary" asp-for="Gender">Male</label>
+                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="F">
+                        <label class="btn btn-outline-primary" asp-for="Gender">Female</label>
+                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="O">
+                        <label class="btn btn-outline-primary" asp-for="Gender">Others</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td><input asp-for="MobileNumber" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input asp-for="Email" type="email" class="form-control" /></td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td><textarea asp-for="Comment"  class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <th>Department Id</th>
+                <td><input asp-for="DepartmentRefId" type="number" class="form-control" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Update User</button>
+        <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back to Listing</a>
+    </div>
+</form>
