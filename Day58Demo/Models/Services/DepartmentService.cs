@@ -1,4 +1,5 @@
 ﻿using Day58Demo.Models.Data;
+using Day58Demo.Models.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Day58Demo.Models.Services;
@@ -18,14 +19,14 @@ public class DepartmentService : ICrudService<Department>
         using var _context = new ApplicationDbContext();
         if (_context.Departments == null)
         {
-            return null;
+            throw new EntityMissingException("Department dbset is missing");
         }
 
         var department = await _context.Departments
             .FirstOrDefaultAsync(m => m.Id == id);
         if (department == null)
         {
-            return null;
+            throw new IdNotFoundException($"Department.Id => {id}, not found");
         }
 
         return department;
@@ -63,12 +64,12 @@ public class DepartmentService : ICrudService<Department>
         return true;
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
         using var _context = new ApplicationDbContext();
         if (_context.Departments == null)
         {
-            return false;
+            throw new EntityMissingException("Department dbset is missing");
         }
         var department = await _context.Departments.FindAsync(id);
         if (department != null)
@@ -77,8 +78,6 @@ public class DepartmentService : ICrudService<Department>
         }
 
         await _context.SaveChangesAsync();
-
-        return true;
     }
 
     private bool DepartmentExists(int id)

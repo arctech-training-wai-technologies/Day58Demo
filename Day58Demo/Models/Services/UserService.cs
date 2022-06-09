@@ -47,7 +47,7 @@ public class UserService : ICrudService<User>
         return true;
     }
 
-    public async Task<bool> DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
         using var context = new ApplicationDbContext();
 
@@ -59,7 +59,5 @@ public class UserService : ICrudService<User>
         context.Users.Remove(userToDelete);
 
         await context.SaveChangesAsync();
-
-        return true;
     }
 }

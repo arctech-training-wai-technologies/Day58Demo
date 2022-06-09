@@ -6,5 +6,5 @@ public interface ICrudService<T>
     Task<T> GetByIdAsync(int id);
     Task CreateAsync(T entity);
     Task<bool> UpdateAsync(T entity);
-    Task<bool> DeleteAsync(int id);
+    Task DeleteAsync(int id);
 }

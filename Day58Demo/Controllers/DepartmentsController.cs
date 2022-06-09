@@ -101,12 +101,15 @@ namespace Day58Demo.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var departmentService = new DepartmentService();
-            var state = await departmentService.DeleteAsync(id);
-
-            if(!state)
+            try
+            {
+                await departmentService.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
                 return Problem("Entity set 'ApplicationDbContext.Departments'  is null.");
-
-            return RedirectToAction(nameof(Index));
+            }
         }
     }
 }
