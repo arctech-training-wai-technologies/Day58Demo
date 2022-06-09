@@ -1,9 +1,10 @@
 ﻿using Day58Demo.Models.Data;
+using Day58Demo.Models.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Day58Demo.Models.Services;
 
-public class UserService
+public class UserService : IUserService
 {
     public async Task<List<User>> GetAllAsync()
     {

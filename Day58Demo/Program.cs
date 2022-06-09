@@ -1,7 +1,13 @@
+using Day58Demo.Models;
+using Day58Demo.Models.Services;
+using Day58Demo.Models.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+AddServicesToDiContainer(builder.Services);
 
 var app = builder.Build();
 
@@ -25,3 +31,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+void AddServicesToDiContainer(IServiceCollection services)
+{
+    services.AddScoped<IUserService, UserService>();
+}
