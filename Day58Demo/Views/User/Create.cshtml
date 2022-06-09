@@ -29,12 +29,12 @@
                 <th>Gender</th>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="M">
-                        <label class="btn btn-outline-primary" asp-for="Gender">Male</label>
-                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="F">
-                        <label class="btn btn-outline-primary" asp-for="Gender">Female</label>
-                        <input type="radio" asp-for="Gender" class="btn-check" autocomplete="off" value="O">
-                        <label class="btn btn-outline-primary" asp-for="Gender">Others</label>
+                        <input type="radio" asp-for="Gender" class="form-check" value="M">&nbsp;
+                        <label asp-for="Gender">Male</label>&nbsp;
+                        <input type="radio" asp-for="Gender" class="form-check" value="F">&nbsp;
+                        <label asp-for="Gender">Female</label>&nbsp;
+                        <input type="radio" asp-for="Gender" class="form-check" value="O">&nbsp;
+                        <label asp-for="Gender">Others</label>
                     </div>
                 </td>
             </tr>
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <th>Comments</th>
-                <td><textarea asp-for="Comment"  class="form-control"></textarea></td>
+                <td><textarea asp-for="Comment" class="form-control"></textarea></td>
             </tr>
             <tr>
                 <th>Department Id</th>
