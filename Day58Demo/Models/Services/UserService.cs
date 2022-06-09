@@ -1,9 +1,10 @@
 ﻿using Day58Demo.Models.Data;
+using Day58Demo.Models.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Day58Demo.Models.Services;
 
-public class UserService : ICrudService<User>
+public class UserService : IUserService
 {
     public async Task<List<User>> GetAllAsync()
     {
@@ -36,15 +37,13 @@ public class UserService : ICrudService<User>
         await context.SaveChangesAsync();
     }
 
-    public async Task<bool> UpdateAsync(User user)
+    public async Task UpdateAsync(User user)
     {
         using var context = new ApplicationDbContext();
 
         // Shubham Pandharpote
         context.Users.Update(user);
         await context.SaveChangesAsync();
-
-        return true;
     }
 
     public async Task DeleteAsync(int id)
